@@ -12,15 +12,18 @@ const brandRoute=require("./routes/brandRoute");
 const colorRoute=require("./routes/colorRoute");
 const enqRoute=require("./routes/enqRoute");
 const couponRoute=require("./routes/couponRoute");
+const uploadRoute=require("./routes/uploadRoute");
 const bodyParser = require("body-parser");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const cookieParser=require("cookie-parser");
 
 const morgan = require("morgan");
+const cors=require("cors");
 // morgan gives details about the queries  
 dbConnect();
 
 app.use(morgan("dev"));
+app.use(cors())
 app.use(express.json()); 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -35,6 +38,7 @@ app.use("/api/brand",brandRoute);
 app.use("/api/coupon",couponRoute);
 app.use("/api/color",colorRoute);
 app.use("/api/enquiry",enqRoute);
+app.use("/api/upload",uploadRoute);
 app.use(notFound);
 app.use(errorHandler)
 

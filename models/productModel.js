@@ -36,15 +36,22 @@ var productSchema = new mongoose.Schema({
     quantity:{
         type:Number,
         required:true,
-        select:false, // if set to false then the user wont be able to see it in output
+        // select:false, // if set to false then the user wont be able to see it in output
     },
     sold:{
         type:Number,
         default:0,
     },
-    images:[],
-    color:[],
-    tags:[],
+    images:[
+        {
+            public_id:String,
+            url:String,
+        }
+    ],
+    color:[{type:mongoose.Schema.Types.ObjectId,ref:"Color"}],
+    tags:{
+        type:String,
+    },
     ratings:[{
         star:Number,
         comment:String,
