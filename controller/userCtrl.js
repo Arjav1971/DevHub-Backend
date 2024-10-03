@@ -69,7 +69,7 @@ const loginUserCtrl=asyncHandler(async (req,res) =>{
     });
     res.cookie("refreshToken",refreshToken,{
       httpOnly:true,
-      maxAge:72*60*60*1000,
+      maxAge:72*60*60*1000,  //72 hours 3days
     })
     res.json({
       _id:findUser?._id,
@@ -312,6 +312,10 @@ const updatePassword=asyncHandler(async(req,res)=>{
     res.json(user);
   }
 })
+
+
+
+
 
 const forgotPasswordToken=asyncHandler(async(req,res)=>{
   const {email}=req.body;

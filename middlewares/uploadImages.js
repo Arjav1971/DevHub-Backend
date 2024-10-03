@@ -99,7 +99,7 @@ const multerFilter = (req, file, cb) => {
 const uploadPhoto = multer({
     storage: multerStorage,
     fileFilter: multerFilter,
-    limits: { filedSize: 2000000 },
+    limits: { fileSize: 2000000 },
 });
 
 const resizeImage = async (file, outputPath) => {
